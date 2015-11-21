@@ -38,6 +38,8 @@ public class Inicial extends javax.swing.JFrame {
         realizarChamada = new javax.swing.JMenuItem();
         Disciplina = new javax.swing.JMenu();
         cadastarDisciplina = new javax.swing.JMenuItem();
+        Cursos = new javax.swing.JMenu();
+        CadastrarCurso = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,10 +65,20 @@ public class Inicial extends javax.swing.JFrame {
 
         realizarMatricula.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         realizarMatricula.setText("Realizar Matricula");
+        realizarMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                realizarMatriculaActionPerformed(evt);
+            }
+        });
         Aluno.add(realizarMatricula);
 
         realizarChamada.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         realizarChamada.setText("Realizar Chamada");
+        realizarChamada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                realizarChamadaActionPerformed(evt);
+            }
+        });
         Aluno.add(realizarChamada);
 
         File.add(Aluno);
@@ -83,6 +95,19 @@ public class Inicial extends javax.swing.JFrame {
         Disciplina.add(cadastarDisciplina);
 
         File.add(Disciplina);
+
+        Cursos.setText("Cursos");
+
+        CadastrarCurso.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        CadastrarCurso.setText("Cadastrar");
+        CadastrarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastrarCursoActionPerformed(evt);
+            }
+        });
+        Cursos.add(CadastrarCurso);
+
+        File.add(Cursos);
 
         jMenuBar1.add(File);
 
@@ -115,6 +140,23 @@ public class Inicial extends javax.swing.JFrame {
         // TODO add your handling code here:
         new CadastroDisciplina().setVisible(true);
     }//GEN-LAST:event_cadastarDisciplinaActionPerformed
+
+    private void realizarMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarMatriculaActionPerformed
+        // TODO add your handling code here:
+        RealizarMatricula realizaMatricula = new RealizarMatricula();
+        realizaMatricula.setVisible(true);
+    }//GEN-LAST:event_realizarMatriculaActionPerformed
+
+    private void realizarChamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarChamadaActionPerformed
+        // TODO add your handling code here:
+        Chamada chamada = new Chamada();
+        chamada.setVisible(true);
+    }//GEN-LAST:event_realizarChamadaActionPerformed
+
+    private void CadastrarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarCursoActionPerformed
+        CadastrarCursos cadastrarCursos = new CadastrarCursos();
+        cadastrarCursos.setVisible(true);
+    }//GEN-LAST:event_CadastrarCursoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,6 +197,8 @@ public class Inicial extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Aluno;
     private javax.swing.JMenuItem Cadastrar;
+    private javax.swing.JMenuItem CadastrarCurso;
+    private javax.swing.JMenu Cursos;
     private javax.swing.JMenu Disciplina;
     private javax.swing.JMenu File;
     private javax.swing.JMenuItem cadastarDisciplina;

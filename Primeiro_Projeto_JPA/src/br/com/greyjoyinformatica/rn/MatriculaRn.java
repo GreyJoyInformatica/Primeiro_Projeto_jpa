@@ -6,28 +6,39 @@
 package br.com.greyjoyinformatica.rn;
 
 import br.com.greyjoyinformatica.bd.Crud;
+import br.com.greyjoyinformatica.bean.Matricula;
+import java.util.List;
 
 /**
  *
  * @author Christian
  */
-public class MatriculaRn implements Crud{
+public class MatriculaRn implements Crud<Matricula>{
 
-    
-    public void salvar(Object bean) {
+    @Override
+    public void salvar(Matricula bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
-    public void excluir(Object bean) {
+    @Override
+    public void excluir(Matricula bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    public Object consultar(Object bean) {
-        return null;
+    @Override
+    public Matricula consultar(Matricula bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
-    public void alterar(Object bean) {
+    @Override
+    public void alterar(Matricula bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List listar(Matricula bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }

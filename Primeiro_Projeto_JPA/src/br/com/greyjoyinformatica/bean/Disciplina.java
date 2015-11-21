@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Disciplina.findAll", query = "SELECT d FROM Disciplina d"),
     @NamedQuery(name = "Disciplina.findByIdDisciplina", query = "SELECT d FROM Disciplina d WHERE d.idDisciplina = :idDisciplina"),
     @NamedQuery(name = "Disciplina.findByDiasAulaidDiasAula", query = "SELECT d FROM Disciplina d WHERE d.diasAulaidDiasAula = :diasAulaidDiasAula"),
-    @NamedQuery(name = "Disciplina.findByCusosidCusos", query = "SELECT d FROM Disciplina d WHERE d.cusosidCusos = :cusosidCusos"),
+    @NamedQuery(name = "Disciplina.findByCursosidCursos", query = "SELECT d FROM Disciplina d WHERE d.cursosidCursos = :cursosidCursos"),
     @NamedQuery(name = "Disciplina.findByNomeDisciplina", query = "SELECT d FROM Disciplina d WHERE d.nomeDisciplina = :nomeDisciplina")})
 public class Disciplina implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -41,8 +41,8 @@ public class Disciplina implements Serializable {
     @Column(name = "DiasAula_idDiasAula")
     private int diasAulaidDiasAula;
     @Basic(optional = false)
-    @Column(name = "Cusos_idCusos")
-    private int cusosidCusos;
+    @Column(name = "Cursos_idCursos")
+    private int cursosidCursos;
     @Column(name = "nomeDisciplina")
     private String nomeDisciplina;
 
@@ -53,10 +53,10 @@ public class Disciplina implements Serializable {
         this.idDisciplina = idDisciplina;
     }
 
-    public Disciplina(Integer idDisciplina, int diasAulaidDiasAula, int cusosidCusos) {
+    public Disciplina(Integer idDisciplina, int diasAulaidDiasAula, int cursosidCursos) {
         this.idDisciplina = idDisciplina;
         this.diasAulaidDiasAula = diasAulaidDiasAula;
-        this.cusosidCusos = cusosidCusos;
+        this.cursosidCursos = cursosidCursos;
     }
 
     public Integer getIdDisciplina() {
@@ -75,12 +75,12 @@ public class Disciplina implements Serializable {
         this.diasAulaidDiasAula = diasAulaidDiasAula;
     }
 
-    public int getCusosidCusos() {
-        return cusosidCusos;
+    public int getCursosidCursos() {
+        return cursosidCursos;
     }
 
-    public void setCusosidCusos(int cusosidCusos) {
-        this.cusosidCusos = cusosidCusos;
+    public void setCursosidCursos(int cursosidCursos) {
+        this.cursosidCursos = cursosidCursos;
     }
 
     public String getNomeDisciplina() {

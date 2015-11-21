@@ -6,24 +6,40 @@
 package br.com.greyjoyinformatica.rnVal;
 
 import br.com.greyjoyinformatica.bd.Crud;
+import br.com.greyjoyinformatica.bean.Diasaula;
+import java.util.List;
 
 /**
  *
  * @author Christian
  */
-public class DiasAulaRNVal implements Crud {
+public class DiasAulaRNVal implements Crud<Diasaula>{
 
-    public void salvar(Object bean) {
+    @Override
+    public void salvar(Diasaula bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void excluir(Object bean) {
+    @Override
+    public void excluir(Diasaula bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Object consultar(Object bean) {
-        return null;
+    @Override
+    public Diasaula consultar(Diasaula bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void alterar(Object bean) {
+    @Override
+    public void alterar(Diasaula bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List listar(Diasaula bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
 }

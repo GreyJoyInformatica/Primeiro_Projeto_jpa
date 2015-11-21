@@ -1,32 +1,46 @@
 package br.com.greyjoyinformatica.rn;
 
+import br.com.greyjoyinformatica.bd.AlunoBd;
 import br.com.greyjoyinformatica.bd.Crud;
 import br.com.greyjoyinformatica.bean.Aluno;
-import java.util.ArrayList;
+import br.com.greyjoyinformatica.rnVal.AlunoRnVal;
 import java.util.List;
+
 
 /**
  *
  * @author Christian
  */
-public class AlunoRn implements Crud{
+public class AlunoRn implements Crud<Aluno> {
 
-   
-    public void salvar(Aluno aluno) {
+    @Override
+    public void salvar(Aluno aluno) {        
+        new AlunoRnVal().salvar(aluno);
+        new AlunoBd().salvar(aluno);
     }
 
-    public void excluir(Object bean) {
+    @Override
+    public void excluir(Aluno bean) {
+        new AlunoRnVal().excluir(bean);
+        new AlunoBd().excluir(bean);
     }
 
-    public List consultar(Object bean) {
-        List<String> list = new ArrayList<>();
-        return list;
+    @Override
+    public Aluno consultar(Aluno bean) {
+        new AlunoRnVal().consultar(bean);
+        return new AlunoBd().consultar(bean);
     }
 
-    public void alterar(Object bean) {
+    @Override
+    public void alterar(Aluno bean) {
+        new AlunoRnVal().alterar(bean);
+        new AlunoBd().alterar(bean);
     }
 
-    public void salvar(Object bean) {
+    @Override
+    public List<Aluno> listar(Aluno bean) {
+        return new AlunoBd().listar(bean);
     }
+    
     
 }

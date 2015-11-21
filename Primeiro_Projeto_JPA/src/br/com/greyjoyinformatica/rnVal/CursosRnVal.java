@@ -6,24 +6,42 @@
 package br.com.greyjoyinformatica.rnVal;
 
 import br.com.greyjoyinformatica.bd.Crud;
+import br.com.greyjoyinformatica.bean.Cursos;
+import java.util.List;
 
 /**
  *
  * @author Christian
  */
-public class CursosRnVal implements Crud{
+public class CursosRnVal implements Crud<Cursos>{
 
-    public void salvar(Object bean) {
+    @Override
+    public void salvar(Cursos bean) {
+        if(bean.getNomeCurso().trim().length() < 2){
+            throw new RuntimeException("preencha todos os campos");
+        }
     }
 
-    public void excluir(Object bean) {
+    @Override
+    public void excluir(Cursos bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Object consultar(Object bean) {
-        return null;
+    @Override
+    public Cursos consultar(Cursos bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void alterar(Object bean) {
+    @Override
+    public void alterar(Cursos bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List listar(Cursos bean) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
 }
