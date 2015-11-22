@@ -1,6 +1,5 @@
 package br.com.greyjoyinformatica.view;
 
-import br.com.greyjoyinformatica.bd.AlunoBd;
 import br.com.greyjoyinformatica.bean.Aluno;
 import br.com.greyjoyinformatica.rn.AlunoRn;
 import javax.swing.JOptionPane;
@@ -140,7 +139,6 @@ public class Cadastro_aluno extends javax.swing.JFrame {
         aluno.setNomeAluno(txtNome.getText());
         aluno.setMatriculaAluno(txtMatricula.getText());
         aluno.setEmailAluno(txtEmail.getText());
-        System.out.println(new AlunoRn().consultar(aluno));
         
         try{
             new AlunoRn().salvar(aluno);
