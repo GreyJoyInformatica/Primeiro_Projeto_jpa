@@ -6,7 +6,9 @@
 package br.com.greyjoyinformatica.rn;
 
 import br.com.greyjoyinformatica.bd.Crud;
+import br.com.greyjoyinformatica.bd.DisciplinaBd;
 import br.com.greyjoyinformatica.bean.Disciplina;
+import br.com.greyjoyinformatica.rnVal.DisciplinaRnVal;
 import java.util.List;
 
 /**
@@ -17,7 +19,8 @@ public class DisciplinaRn implements Crud<Disciplina>{
 
     @Override
     public void salvar(Disciplina bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        new DisciplinaRnVal().salvar(bean);
+        new DisciplinaBd().salvar(bean);
     }
 
     @Override
@@ -37,7 +40,7 @@ public class DisciplinaRn implements Crud<Disciplina>{
 
     @Override
     public List listar(Disciplina bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new DisciplinaBd().listar(bean);
     }
 
 }

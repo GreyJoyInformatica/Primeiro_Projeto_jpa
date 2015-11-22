@@ -78,4 +78,17 @@ public class MatriculaBd implements Crud<Matricula>{
         return null;
     }
     
+    public List Chamada(Matricula bean) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TrabalhoLab2ComJPAPU");
+        EntityManager em = emf.createEntityManager();
+
+        Query qry = em.createNamedQuery("Matricula.findByDisciplinaidDisciplina");
+        qry.setParameter("disciplinaidDisciplina", bean.getDisciplinaidDisciplina());
+        List rl = qry.getResultList();
+        if(rl != null) {
+            return rl;
+        } 
+        
+        return null;
+    }
 }

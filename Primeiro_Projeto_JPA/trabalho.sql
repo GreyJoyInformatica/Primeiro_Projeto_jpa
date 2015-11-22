@@ -26,11 +26,7 @@ CREATE TABLE `aluno` (
   `emailAluno` varchar(100) DEFAULT NULL,
   `matriculaAluno` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`idAluno`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
-/*Data for the table `aluno` */
-
-insert  into `aluno`(`idAluno`,`nomeAluno`,`emailAluno`,`matriculaAluno`) values (1,'testetete','teste','12345'),(2,'cburgard@moderna','christian burgar','201520000');
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `chamada` */
 
@@ -39,24 +35,21 @@ DROP TABLE IF EXISTS `chamada`;
 CREATE TABLE `chamada` (
   `idChamada` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Aluno_idAluno` int(10) unsigned NOT NULL,
-  `presente` tinyint(1) DEFAULT NULL,
+  `presente` tinyint(1) NOT NULL,
+  `disciplinaIdDisciplina` int(10) NOT NULL,
   PRIMARY KEY (`idChamada`),
   KEY `Chamada_FKIndex1` (`Aluno_idAluno`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
-/*Data for the table `chamada` */
+/*Table structure for table `cursos` */
 
-/*Table structure for table `cusos` */
+DROP TABLE IF EXISTS `cursos`;
 
-DROP TABLE IF EXISTS `cusos`;
-
-CREATE TABLE `cusos` (
-  `idCusos` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cursos` (
+  `idCursos` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nomeCurso` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`idCusos`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `cusos` */
+  PRIMARY KEY (`idCursos`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `diasaula` */
 
@@ -66,9 +59,7 @@ CREATE TABLE `diasaula` (
   `idDiasAula` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `diaAula` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idDiasAula`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `diasaula` */
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `disciplina` */
 
@@ -77,14 +68,12 @@ DROP TABLE IF EXISTS `disciplina`;
 CREATE TABLE `disciplina` (
   `idDisciplina` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `DiasAula_idDiasAula` int(10) unsigned NOT NULL,
-  `Cusos_idCusos` int(10) unsigned NOT NULL,
+  `Cursos_idCursos` int(10) unsigned NOT NULL,
   `nomeDisciplina` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idDisciplina`),
-  KEY `Disciplina_FKIndex1` (`Cusos_idCusos`),
+  KEY `Disciplina_FKIndex1` (`Cursos_idCursos`),
   KEY `Disciplina_FKIndex2` (`DiasAula_idDiasAula`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `disciplina` */
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `matricula` */
 
@@ -97,9 +86,7 @@ CREATE TABLE `matricula` (
   PRIMARY KEY (`idMatricula`),
   KEY `Matricula_FKIndex1` (`Aluno_idAluno`),
   KEY `Matricula_FKIndex2` (`Disciplina_idDisciplina`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `matricula` */
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

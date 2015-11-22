@@ -1,6 +1,7 @@
 package br.com.greyjoyinformatica.bd;
 
 import br.com.greyjoyinformatica.bean.Aluno;
+import br.com.greyjoyinformatica.bean.Matricula;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -37,7 +38,7 @@ public class AlunoBd implements Crud<Aluno> {
         Query qry = em.createNamedQuery("Aluno.findByIdAluno");
         qry.setParameter("idAluno", bean.getIdAluno());
         Object singleResult = qry.getSingleResult();
-        if(singleResult!=null) {
+        if(singleResult!= null) {
             return (Aluno) singleResult;
         } 
         
@@ -68,4 +69,17 @@ public class AlunoBd implements Crud<Aluno> {
         return null;
     }
     
+    public Aluno consultarId(int bean) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TrabalhoLab2ComJPAPU");
+        EntityManager em = emf.createEntityManager();
+
+        Query qry = em.createNamedQuery("Aluno.findByIdAluno");
+        qry.setParameter("idAluno", bean);
+        Object singleResult = qry.getSingleResult();
+        if(singleResult!= null) {
+            return (Aluno) singleResult;
+        } 
+        
+        return null;
+    }
 }

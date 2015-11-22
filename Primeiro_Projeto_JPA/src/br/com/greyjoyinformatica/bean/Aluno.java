@@ -105,7 +105,7 @@ public class Aluno implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.greyjoyinformatica.bean.Aluno[ idAluno=" + idAluno + " ]";
+        return getNomeAluno();
     }
     
 }

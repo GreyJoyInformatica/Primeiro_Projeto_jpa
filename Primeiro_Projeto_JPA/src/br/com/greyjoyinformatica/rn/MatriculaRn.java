@@ -6,7 +6,9 @@
 package br.com.greyjoyinformatica.rn;
 
 import br.com.greyjoyinformatica.bd.Crud;
+import br.com.greyjoyinformatica.bd.MatriculaBd;
 import br.com.greyjoyinformatica.bean.Matricula;
+import br.com.greyjoyinformatica.rnVal.MatriculaRnVal;
 import java.util.List;
 
 /**
@@ -17,7 +19,8 @@ public class MatriculaRn implements Crud<Matricula>{
 
     @Override
     public void salvar(Matricula bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        new MatriculaRnVal().salvar(bean);
+        new MatriculaBd().salvar(bean);
     }
 
     @Override
@@ -27,7 +30,7 @@ public class MatriculaRn implements Crud<Matricula>{
 
     @Override
     public Matricula consultar(Matricula bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new MatriculaBd().consultar(bean);
     }
 
     @Override
@@ -37,8 +40,10 @@ public class MatriculaRn implements Crud<Matricula>{
 
     @Override
     public List listar(Matricula bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new MatriculaBd().listar(bean);
     }
-
-    
+     
+    public List Chamada(Matricula bean) {
+        return new MatriculaBd().Chamada(bean);
+    }
 }

@@ -12,7 +12,9 @@ public class DisciplinaRnVal implements Crud<Disciplina>{
 
     @Override
     public void salvar(Disciplina bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(bean.getNomeDisciplina().trim().length() < 2 || bean.getDiasAulaidDiasAula() == 0 || bean.getCursosidCursos() == 0){
+            throw new RuntimeException("verifique os campos digitados");
+        }
     }
 
     @Override

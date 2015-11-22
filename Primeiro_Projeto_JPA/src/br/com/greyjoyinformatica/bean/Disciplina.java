@@ -113,7 +113,7 @@ public class Disciplina implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.greyjoyinformatica.bean.Disciplina[ idDisciplina=" + idDisciplina + " ]";
+        return getNomeDisciplina();
     }
     
 }

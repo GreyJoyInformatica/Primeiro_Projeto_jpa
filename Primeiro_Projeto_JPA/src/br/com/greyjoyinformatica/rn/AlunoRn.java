@@ -3,6 +3,7 @@ package br.com.greyjoyinformatica.rn;
 import br.com.greyjoyinformatica.bd.AlunoBd;
 import br.com.greyjoyinformatica.bd.Crud;
 import br.com.greyjoyinformatica.bean.Aluno;
+import br.com.greyjoyinformatica.bean.Matricula;
 import br.com.greyjoyinformatica.rnVal.AlunoRnVal;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class AlunoRn implements Crud<Aluno> {
 
     @Override
     public Aluno consultar(Aluno bean) {
-        new AlunoRnVal().consultar(bean);
+        //new AlunoRnVal().consultar(bean);
         return new AlunoBd().consultar(bean);
     }
 
@@ -41,6 +42,8 @@ public class AlunoRn implements Crud<Aluno> {
     public List<Aluno> listar(Aluno bean) {
         return new AlunoBd().listar(bean);
     }
-    
-    
+    public Aluno consultarId(int bean) {
+        //new AlunoRnVal().consultar(bean);
+        return new AlunoBd().consultarId(bean);
+    }
 }

@@ -17,7 +17,9 @@ public class MatriculaRnVal implements Crud<Matricula>{
 
     @Override
     public void salvar(Matricula bean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(bean.getAlunoidAluno() == 0 || bean.getDisciplinaidDisciplina() == 0){
+            throw new RuntimeException("selecione Aluno e Disciplina para a matricula");
+        }
     }
 
     @Override

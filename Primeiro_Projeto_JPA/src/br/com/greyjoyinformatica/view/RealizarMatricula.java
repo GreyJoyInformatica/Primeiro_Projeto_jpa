@@ -6,7 +6,11 @@
 package br.com.greyjoyinformatica.view;
 
 import br.com.greyjoyinformatica.bean.Aluno;
+import br.com.greyjoyinformatica.bean.Disciplina;
+import br.com.greyjoyinformatica.bean.Matricula;
 import br.com.greyjoyinformatica.rn.AlunoRn;
+import br.com.greyjoyinformatica.rn.DisciplinaRn;
+import br.com.greyjoyinformatica.rn.MatriculaRn;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -24,9 +28,18 @@ public class RealizarMatricula extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
         AlunoRn alunoRn = new AlunoRn();
-        List lista = alunoRn.listar(null);
-        for(Object a : lista ) {
-            cbbAluno.addItem(a);
+        DisciplinaRn disciplinaRn = new DisciplinaRn();
+        
+        if(disciplinaRn.listar(null).size() == 0 || alunoRn.listar(null).size() == 0){
+            JOptionPane.showMessageDialog(null, "voce precisa ter alunos e disciplinas cadastradas");
+        }else{
+        
+            for(Object a : alunoRn.listar(null)) {
+                cbbAluno.addItem(a);
+            }
+            for(Object dis : disciplinaRn.listar(null)){
+                cbbDisciplina.addItem(dis);
+            }
         }
 
     }
@@ -42,18 +55,17 @@ public class RealizarMatricula extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         cbbAluno = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
+        cbbDisciplina = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Realizar Matricula");
         setResizable(false);
 
         jLabel1.setText("Selecione o Aluno");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Seleciona a Disciplina");
 
@@ -71,6 +83,9 @@ public class RealizarMatricula extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("Matricular aluno");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,37 +93,42 @@ public class RealizarMatricula extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(jButton1)
+                        .addGap(67, 67, 67)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox2, 0, 259, Short.MAX_VALUE)
+                            .addComponent(cbbDisciplina, 0, 259, Short.MAX_VALUE)
                             .addComponent(cbbAluno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(jButton1)
-                        .addGap(67, 67, 67)
-                        .addComponent(jButton2)))
+                        .addGap(147, 147, 147)
+                        .addComponent(jLabel3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel3)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbbAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbbDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         pack();
@@ -121,10 +141,24 @@ public class RealizarMatricula extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        Aluno aluno = (Aluno) cbbAluno.getSelectedItem();        
-        JOptionPane.showMessageDialog(null, "voce selecionou o id " + aluno.getIdAluno());
+        Matricula matricula = new Matricula();
+        try {
+            Aluno aluno = (Aluno) cbbAluno.getSelectedItem();
+            Disciplina disciplina = (Disciplina) cbbDisciplina.getSelectedItem();
+            matricula.setAlunoidAluno(aluno.getIdAluno());
+            matricula.setDisciplinaidDisciplina(disciplina.getIdDisciplina());
 
-
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "voce precisa ter alunos e disciplinas cadastradas");
+        }        
+        try {
+            new MatriculaRn().salvar(matricula);
+            JOptionPane.showMessageDialog(null, "matriculado");
+            cbbAluno.setSelectedIndex(0);
+            cbbDisciplina.setSelectedIndex(0);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -165,10 +199,11 @@ public class RealizarMatricula extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbbAluno;
+    private javax.swing.JComboBox cbbDisciplina;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

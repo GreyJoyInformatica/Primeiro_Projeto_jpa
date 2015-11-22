@@ -41,6 +41,8 @@ public class Chamada implements Serializable {
     private int alunoidAluno;
     @Column(name = "presente")
     private Boolean presente;
+    @Column(name = "disciplinaIdDisciplina")
+    private int disciplinaIdDisciplina;
 
     public Chamada() {
     }
@@ -76,6 +78,14 @@ public class Chamada implements Serializable {
 
     public void setPresente(Boolean presente) {
         this.presente = presente;
+    }
+
+    public int getDisciplinaIdDisciplina() {
+        return disciplinaIdDisciplina;
+    }
+
+    public void setDisciplinaIdDisciplina(int disciplinaIdDisciplina) {
+        this.disciplinaIdDisciplina = disciplinaIdDisciplina;
     }
 
     @Override

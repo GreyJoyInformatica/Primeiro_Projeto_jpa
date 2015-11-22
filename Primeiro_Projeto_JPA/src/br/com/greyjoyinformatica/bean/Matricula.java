@@ -102,7 +102,7 @@ public class Matricula implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.greyjoyinformatica.bean.Matricula[ idMatricula=" + idMatricula + " ]";
+        return String.valueOf(getAlunoidAluno());
     }
     
 }

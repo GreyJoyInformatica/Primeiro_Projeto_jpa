@@ -40,6 +40,8 @@ public class Inicial extends javax.swing.JFrame {
         cadastarDisciplina = new javax.swing.JMenuItem();
         Cursos = new javax.swing.JMenu();
         CadastrarCurso = new javax.swing.JMenuItem();
+        DiaLetivo = new javax.swing.JMenu();
+        CadastrarDiaEDisciplina = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -109,6 +111,20 @@ public class Inicial extends javax.swing.JFrame {
 
         File.add(Cursos);
 
+        DiaLetivo.setText("Dia Letivo");
+
+        CadastrarDiaEDisciplina.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F9, 0));
+        CadastrarDiaEDisciplina.setText("Cadastrar Dia com Disciplina");
+        CadastrarDiaEDisciplina.setRolloverEnabled(true);
+        CadastrarDiaEDisciplina.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastrarDiaEDisciplinaActionPerformed(evt);
+            }
+        });
+        DiaLetivo.add(CadastrarDiaEDisciplina);
+
+        File.add(DiaLetivo);
+
         jMenuBar1.add(File);
 
         jMenu2.setText("Edit");
@@ -149,7 +165,7 @@ public class Inicial extends javax.swing.JFrame {
 
     private void realizarChamadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarChamadaActionPerformed
         // TODO add your handling code here:
-        Chamada chamada = new Chamada();
+        RealizarChamada chamada = new RealizarChamada();
         chamada.setVisible(true);
     }//GEN-LAST:event_realizarChamadaActionPerformed
 
@@ -157,6 +173,12 @@ public class Inicial extends javax.swing.JFrame {
         CadastrarCursos cadastrarCursos = new CadastrarCursos();
         cadastrarCursos.setVisible(true);
     }//GEN-LAST:event_CadastrarCursoActionPerformed
+
+    private void CadastrarDiaEDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarDiaEDisciplinaActionPerformed
+        // TODO add your handling code here:
+        CadastroDiaAula cadastrarDia = new CadastroDiaAula();
+        cadastrarDia.setVisible(true);
+    }//GEN-LAST:event_CadastrarDiaEDisciplinaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,7 +220,9 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JMenu Aluno;
     private javax.swing.JMenuItem Cadastrar;
     private javax.swing.JMenuItem CadastrarCurso;
+    private javax.swing.JMenuItem CadastrarDiaEDisciplina;
     private javax.swing.JMenu Cursos;
+    private javax.swing.JMenu DiaLetivo;
     private javax.swing.JMenu Disciplina;
     private javax.swing.JMenu File;
     private javax.swing.JMenuItem cadastarDisciplina;

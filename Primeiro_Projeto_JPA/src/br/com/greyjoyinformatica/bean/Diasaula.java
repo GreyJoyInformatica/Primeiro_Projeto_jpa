@@ -83,7 +83,7 @@ public class Diasaula implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.greyjoyinformatica.bean.Diasaula[ idDiasAula=" + idDiasAula + " ]";
+        return getDiaAula();
     }
     
 }

@@ -1,5 +1,6 @@
 package br.com.greyjoyinformatica.view;
 
+import br.com.greyjoyinformatica.bd.AlunoBd;
 import br.com.greyjoyinformatica.bean.Aluno;
 import br.com.greyjoyinformatica.rn.AlunoRn;
 import javax.swing.JOptionPane;
@@ -16,6 +17,7 @@ public class Cadastro_aluno extends javax.swing.JFrame {
     public Cadastro_aluno() {
         initComponents();
         this.setLocationRelativeTo(null);
+       
     }
 
     @SuppressWarnings("unchecked")
@@ -30,6 +32,7 @@ public class Cadastro_aluno extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Aluno");
@@ -54,6 +57,9 @@ public class Cadastro_aluno extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setText("Cadastro de aluno");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,20 +86,25 @@ public class Cadastro_aluno extends javax.swing.JFrame {
                         .addGap(215, 215, 215)
                         .addComponent(jButton1)
                         .addGap(44, 44, 44)
-                        .addComponent(jButton2)))
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(jLabel4)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))))
@@ -108,7 +119,7 @@ public class Cadastro_aluno extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
                             .addComponent(jButton1))))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         pack();
@@ -129,6 +140,7 @@ public class Cadastro_aluno extends javax.swing.JFrame {
         aluno.setNomeAluno(txtNome.getText());
         aluno.setMatriculaAluno(txtMatricula.getText());
         aluno.setEmailAluno(txtEmail.getText());
+        System.out.println(new AlunoRn().consultar(aluno));
         
         try{
             new AlunoRn().salvar(aluno);
@@ -183,6 +195,7 @@ public class Cadastro_aluno extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMatricula;
     private javax.swing.JTextField txtNome;

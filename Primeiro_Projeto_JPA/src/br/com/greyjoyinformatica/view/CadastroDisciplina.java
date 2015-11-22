@@ -6,8 +6,10 @@
 package br.com.greyjoyinformatica.view;
 
 import br.com.greyjoyinformatica.bean.Cursos;
+import br.com.greyjoyinformatica.bean.Diasaula;
 import br.com.greyjoyinformatica.bean.Disciplina;
 import br.com.greyjoyinformatica.rn.CursosRn;
+import br.com.greyjoyinformatica.rn.DiasAulaRn;
 import br.com.greyjoyinformatica.rn.DisciplinaRn;
 import javax.swing.JOptionPane;
 
@@ -23,9 +25,22 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     public CadastroDisciplina() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
         CursosRn curso = new CursosRn();
-        for(Object dis : curso.listar(null)){
-            cbbCurso.addItem(dis);
+        DiasAulaRn diasAula = new DiasAulaRn();
+        
+        if(curso.listar(null).size() == 0 || diasAula.listar(null).size() == 0){
+           
+           JOptionPane.showMessageDialog(null, "voce precisa ter cursos e dias letivos cadastrados"
+                    + " cadastre um Curso e um dia letivo"); 
+        }else{
+            
+            for(Object dis : curso.listar(null)){
+                cbbCurso.addItem(dis);
+            }
+            for(Object dias : diasAula.listar(null)){
+                cbbDias.addItem(dias);
+            }
         }
     }
 
@@ -45,7 +60,8 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        cbbDiaAula = new javax.swing.JComboBox<String>();
+        cbbDias = new javax.swing.JComboBox();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Disciplina");
@@ -75,40 +91,45 @@ public class CadastroDisciplina extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Dia Aula");
+        jLabel3.setText("Dia Letivo");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setText("Cadastro de disciplinas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtNomeDisciplina)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(30, 30, 30)
-                                .addComponent(cbbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbbDiaAula, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNomeDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jButton1)
-                        .addGap(65, 65, 65)
-                        .addComponent(jButton2)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addComponent(cbbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbbDias, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))))
+                .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(129, 129, 129))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNomeDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -117,12 +138,12 @@ public class CadastroDisciplina extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(cbbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(cbbDiaAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbbDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,11 +157,25 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         // TODO add your handling code here:
         Disciplina disciplina = new Disciplina();
         disciplina.setNomeDisciplina(txtNomeDisciplina.getText());
-        disciplina.setCursosidCursos((int) cbbCurso.getSelectedItem());
-        disciplina.setCursosidCursos((int) cbbDiaAula.getSelectedItem());
         
         try{
+            
+            Cursos curso = (Cursos) cbbCurso.getSelectedItem();
+            Diasaula dias = (Diasaula) cbbDias.getSelectedItem();
+            disciplina.setCursosidCursos(curso.getIdCursos());
+            disciplina.setDiasAulaidDiasAula(dias.getIdDiasAula());
+        
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "vc nao pode ter cursos ou dias letivos vazios");
+        }
+        
+        
+        try{
+            
             new DisciplinaRn().salvar(disciplina);
+            JOptionPane.showMessageDialog(null, "cadastrado");
+            txtNomeDisciplina.setText(null);
+        
         }catch(Exception e )
         {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -189,12 +224,13 @@ public class CadastroDisciplina extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbbCurso;
-    private javax.swing.JComboBox<String> cbbDiaAula;
+    private javax.swing.JComboBox cbbDias;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtNomeDisciplina;
     // End of variables declaration//GEN-END:variables
 }
